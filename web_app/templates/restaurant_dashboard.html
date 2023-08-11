@@ -1,0 +1,12 @@
+{% extends "bootstrap_5_layout.html" %}
+{% set active_page = "restaurant_dashboard" %}
+
+{% block content %}
+
+    <h2>Restaurant Dashboard</h2>
+
+    {% for row in restaurants %}
+    <p>{{row["name"]}}</p>
+
+        {% endfor %}
+{% endblock %}

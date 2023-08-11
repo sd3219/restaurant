@@ -1,0 +1,20 @@
+
+{% extends "bootstrap_5_layout.html" %}
+{% set active_page = "restaurant_form" %}
+
+{% block content %}
+
+    <h2>Restaurant Form</h2>
+
+    <p>Request some restaurant data...</p>
+
+    <form action="/restaurant/dashboard" method="POST">
+
+        <label>Zip Code:</label>
+        <input type="integer" name="c_zipcode" placeholder="10003" value="10003">
+        <br>
+
+        <button class="btn btn-success">Submit</button>
+    </form>
+
+{% endblock %}

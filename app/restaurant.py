@@ -10,7 +10,7 @@ load_dotenv() #> invoking this function loads contents of the ".env" file into t
 API_KEY = os.getenv("API_KEY")
 
 
-def fetch_restaurant_data(zip_code):
+def fetch_restaurant_data(c_zipcode):
     request_url = "https://api.yelp.com/v3/businesses/search"
 
     request_params = {
@@ -42,6 +42,6 @@ if __name__ == "__main__":
 
     for r in restaurant:
         if c_zipcode == r["location"]["zip_code"]:
-            print (r["name"])
+            print (r["name"], "|", r["location"]["address1"]+", "+r["location"]["city"]+", "+r["location"]["zip_code"])
 
 
