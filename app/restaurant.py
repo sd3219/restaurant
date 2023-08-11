@@ -26,6 +26,7 @@ def fetch_restaurant_data(c_zipcode):
     restaurant = json.loads(response.text)
     restaurant = restaurant["businesses"]
     restaurant = [ r for r in restaurant if r["rating"] >= 4.5 ]
+    restaurant = [ r for r in restaurant if c_zipcode == r["location"]["zip_code"] ]
 
     return restaurant
 
@@ -41,7 +42,6 @@ if __name__ == "__main__":
     restaurant = fetch_restaurant_data(c_zipcode)
 
     for r in restaurant:
-        if c_zipcode == r["location"]["zip_code"]:
-            print (r["name"], "|", r["location"]["address1"]+", "+r["location"]["city"]+", "+r["location"]["zip_code"])
+        print (r["name"], "|", r["location"]["address1"]+", "+r["location"]["city"]+", "+r["location"]["zip_code"])
 
 

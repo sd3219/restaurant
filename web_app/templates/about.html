@@ -3,6 +3,87 @@
 
 {% block content %}
 
-    <h1>About Me</h1>
-    <p>This is a paragraph on the "about" page.</p>
+<style>
+    * {
+      box-sizing: border-box;
+    }
+    
+    /* Create three equal columns that floats next to each other */
+    .column {
+      float: left;
+      width: 33.33%;
+      padding: 20px;
+      height: 180px; /* Should be removed. Only for demonstration */
+      text-align: center;
+    }
+    
+    /* Clear floats after the columns */
+    .row:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+
+    .center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width: 50%;
+    }
+</style>
+
+
+    <h1>About</h1>
+    <p>Our team developed a web app interface for individuals looking to explore nearby trending restaurants.</p>
+    
+
+    <img src="https://assets-global.website-files.com/5a6f337e3f25150001fa6f79/61e7a37f5a14f156d89cc48c_what-is-seo-for-restaurants.jpeg" alt="Search Restaurant" class="center" style="width:750px;height:500px;">
+
+
+    <br>
+    <br>
+    <br>
+
+
+    <h2>Problem</h2>
+
+    <div class="row">
+      <div class="column" style="background-color:#8fbbf3;">
+        <h2>No Time</h2>
+        <p>Working professionals don’t have time to read Eater or Timeout etc</p>
+      </div>
+      <div class="column" style="background-color:#8fbbf3;">
+        <h2>No Filter</h2>
+        <p>Existing solutions lack ability to filter nearby trending restaurants</p>
+      </div>
+      <div class="column" style="background-color:#8fbbf3;">
+        <h2>No Updates</h2>
+        <p>Manual process to identify restaurants every month</p>
+      </div>
+    </div>
+
+
+    <br>
+    <br>
+
+
+    <h2>Solution</h2>
+
+    <div class="row">
+      <div class="column" style="background-color:#f3f28f;">
+        <h2>Time</h2>
+        <p>Eliminates time spent researching trending restaurants</p>
+      </div>
+      <div class="column" style="background-color:#f3f28f;">
+        <h2>Filter</h2>
+        <p>Yelp API enables key parameter filtering for end-users</p>
+      </div>
+      <div class="column" style="background-color:#f3f28f;">
+        <h2>Updates</h2>
+        <p>Refreshed data pulled through automatic updates</p>
+      </div>
+    </div>
+
+    <br>
+
 {% endblock %}
