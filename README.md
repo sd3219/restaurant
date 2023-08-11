@@ -3,22 +3,22 @@
 
 ## Setup
 
-Obtain an [AlphaVantage API Key](https://www.alphavantage.co/support/#api-key). A normal key should be fine, but alternatively you can use one of the prof's "premium" keys. Then create a file called ".env" and place it inside (like the following example):
+Obtain an [Yelp API Key](https://www.yelp.com/developers/v3/manage_app). A normal key is limited to display 50 items. Then create a file called ".env" and place it inside (like the following example):
 ```sh
 # this is the ".env" file (in the root directory of the repo)
 
-ALPHAVANTAGE_API_KEY="____________"
+API_KEY="____________"
 ```
 
 
 
 Create a virtual environment:
 ```sh
-conda create -n unemployment-env python=3.10
+conda create -n restaurant-env python=3.10
 ```
 
 ```sh
-conda activate unemployment-env
+conda activate restaurant-env
 ```
 
 Install third-party packages:
@@ -32,9 +32,9 @@ pip install -r requirements.txt
 Run the report:
 
 ```sh
-python app/unemployment.py
+python app/restaurant.py
 
-python -m app.unemployment
+python -m app.restaurant
 ```
 
 
