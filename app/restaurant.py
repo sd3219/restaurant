@@ -12,23 +12,48 @@ API_KEY = os.getenv("API_KEY")
 
 def fetch_restaurant_data(c_zipcode):
     request_url = "https://api.yelp.com/v3/businesses/search"
-
+    
     request_params = {
-    'term': 'food',
-    'limit': 50,
-    'offset': 50,
-    'radius': 10000,
-    'location': 'new york'
+        'term': 'food',
+        'limit': 50,
+        'offset': 0,  # Reset offset to 0 for each request
+        'radius': 10000,
+        'location': 'new york'
     }
-    request_headers = {'Authorization': f"bearer {API_KEY}"}
+    request_headers = {'Authorization': f"Bearer {API_KEY}"}
 
     response = requests.get(url=request_url, params=request_params, headers=request_headers)
-    restaurant_data = json.loads(response.text)
-    restaurant = restaurant_data["businesses"]
-    restaurant = [ r for r in restaurant if r["rating"] >= 4.5 ]
-    restaurant = [ r for r in restaurant if c_zipcode == r["location"]["zip_code"] ]
 
-    return restaurant
+    if response.status_code == 200:
+        restaurant_data = response.json()
+        restaurants = restaurant_data.get("businesses", [])
+        restaurants = [r for r in restaurants if r.get("rating", 0) >= 4.5]
+        restaurants = [r for r in restaurants if c_zipcode == r["location"].get("zip_code", "")]
+        return restaurants
+    else:
+        print("Error while fetching restaurant data:", response.status_code)
+        return []
+
+
+#def fetch_restaurant_data(c_zipcode):
+#    request_url = "https://api.yelp.com/v3/businesses/search"
+#
+#    request_params = {
+#    'term': 'food',
+#    'limit': 50,
+#    'offset': 0,
+#    'radius': 10000,
+#    'location': 'new york'
+#    }
+#    request_headers = {'Authorization': f"bearer {API_KEY}"}
+#
+#    response = requests.get(url=request_url, params=request_params, headers=request_headers)
+#    restaurant_data = json.loads(response.text)
+#    restaurant = restaurant_data["businesses"]
+#    restaurant = [ r for r in restaurant if r["rating"] >= 4.5 ]
+#    restaurant = [ r for r in restaurant if c_zipcode == r["location"]["zip_code"] ]
+#
+#    return restaurant
 
 
 
