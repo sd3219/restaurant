@@ -23,8 +23,8 @@ def fetch_restaurant_data(c_zipcode):
     request_headers = {'Authorization': f"bearer {API_KEY}"}
 
     response = requests.get(url=request_url, params=request_params, headers=request_headers)
-    restaurant = json.loads(response.text)
-    restaurant = restaurant["businesses"]
+    restaurant_data = json.loads(response.text)
+    restaurant = restaurant_data["businesses"]
     restaurant = [ r for r in restaurant if r["rating"] >= 4.5 ]
     restaurant = [ r for r in restaurant if c_zipcode == r["location"]["zip_code"] ]
 
