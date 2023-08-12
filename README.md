@@ -1,4 +1,4 @@
-# unemployment-inclass-summer-2023
+# Trending Restaurant Web App
 
 
 ## Setup
