@@ -2,11 +2,59 @@
 {% set active_page = "restaurant_dashboard" %}
 
 {% block content %}
+<style>
+    * {
+      box-sizing: border-box;
+    }
+    
+    /* Create three equal columns that floats next to each other */
+    .column {
+      float: left;
+      width: 33.33%;
+      padding: 20px;
+    }
+    
+    /* Clear floats after the columns */
+    .row:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+</style>
 
     <h2>Restaurant Dashboard</h2>
 
+    <br>
+
+    <div class="row">
+        <div class="column">
+          <h3>Name</h3>
+        </div>
+        <div class="column">
+          <h3>Address</h3>
+        </div>
+        <div class="column">
+          <h3>Image</h3>
+        </div>
+      </div>
+
+
     {% for row in restaurants %}
-    <p>{{row["name"]}}</p>
+    
+    <div class="row">
+        <div class="column">
+          <a href="{{row["url"]}}" target="_blank">{{row["name"]}}</a>
+        </div>
+        <div class="column">
+          <p>{{row["location"]["address1"]}}, {{row["location"]["city"]}}, {{row["location"]["zip_code"]}}</p>
+        </div>
+        <div class="column">
+            <img src="{{row["image_url"]}}" alt="..." class="center" style="height:80px;">
+        </div>
+      </div>
+
 
         {% endfor %}
+        
+            
 {% endblock %}

@@ -34,14 +34,21 @@ def fetch_restaurant_data(c_zipcode):
 
 
 if __name__ == "__main__":
-
-    print("RESTAURANT REPORT...")
-
-    c_zipcode = input ("What's your zipcode '10001', '10003', '11222' ? ")
     
+    c_zipcode = input ("What's your zipcode '10001', '10003', '11222' ? ")
+
     restaurant = fetch_restaurant_data(c_zipcode)
 
-    for r in restaurant:
-        print (r["name"], "|", r["location"]["address1"]+", "+r["location"]["city"]+", "+r["location"]["zip_code"])
+    zipcode_list = [ r["location"]["zip_code"] for r in restaurant ]
+
+    if c_zipcode in zipcode_list:
+
+        print("RESTAURANT REPORT...")
+
+        for r in restaurant:
+            print (r["name"], "|", r["location"]["address1"]+", "+r["location"]["city"]+", "+r["location"]["zip_code"])
+    
+    else:
+        print ("OOPS! Invalid input. Try again.")
 
 

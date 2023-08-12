@@ -38,13 +38,6 @@ python -m app.restaurant
 ```
 
 
-Run the stocks report:
-
-```sh
-python -m app.stocks
-```
-
-
 Run the web_app:
 ```sh
 # Mac OS:

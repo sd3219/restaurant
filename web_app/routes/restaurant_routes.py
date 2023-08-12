@@ -22,15 +22,19 @@ def restaurant_dashboard():
 
     c_zipcode = request_data.get("c_zipcode")
 
-    try:
-        restaurants = fetch_restaurant_data(c_zipcode=c_zipcode)
+    restaurants = fetch_restaurant_data(c_zipcode=c_zipcode)
 
+    zipcode_list = [ r["location"]["zip_code"] for r in restaurants ]
+
+    if c_zipcode in zipcode_list:
+        
         flash("Fetched Real-time Market Data!", "success")
         return render_template("restaurant_dashboard.html",
             restaurants=restaurants
         )
-    except Exception as err:
-        print('OOPS', err)
+    
+    else:
+        print('OOPS')
 
-        flash("Market Data Error. Please check your symbol and try again!", "danger")
+        flash("Data Error. Please check your zipcode and try again!", "danger")
         return redirect("/restaurant/form")
