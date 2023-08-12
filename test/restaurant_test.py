@@ -3,7 +3,7 @@ from app.restaurant import fetch_restaurant_data
 
 #test
 x = "string"
-assert len(x) == 5
+assert len(x) == 6
 
 #def test_restaurant_data(c_zipcode="10003"):
 #
