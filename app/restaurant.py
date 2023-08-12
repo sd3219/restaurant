@@ -24,6 +24,7 @@ def fetch_restaurant_data(c_zipcode):
 
     response = requests.get(url=request_url, params=request_params, headers=request_headers)
 
+    #chatgpt wrapped the code into an if else statement & cleaned up the "businesses" key in the fetching instead of filtering after
     if response.status_code == 200:
         restaurant_data = response.json()
         restaurants = restaurant_data.get("businesses", [])
@@ -33,28 +34,6 @@ def fetch_restaurant_data(c_zipcode):
     else:
         print("Error while fetching restaurant data:", response.status_code)
         return []
-
-
-#def fetch_restaurant_data(c_zipcode):
-#    request_url = "https://api.yelp.com/v3/businesses/search"
-#
-#    request_params = {
-#    'term': 'food',
-#    'limit': 50,
-#    'offset': 0,
-#    'radius': 10000,
-#    'location': 'new york'
-#    }
-#    request_headers = {'Authorization': f"bearer {API_KEY}"}
-#
-#    response = requests.get(url=request_url, params=request_params, headers=request_headers)
-#    restaurant_data = json.loads(response.text)
-#    restaurant = restaurant_data["businesses"]
-#    restaurant = [ r for r in restaurant if r["rating"] >= 4.5 ]
-#    restaurant = [ r for r in restaurant if c_zipcode == r["location"]["zip_code"] ]
-#
-#    return restaurant
-
 
 
 
